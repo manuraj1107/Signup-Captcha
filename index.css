@@ -3,12 +3,28 @@
     --success-color:#2ecc71;
     --error-color:#e74c3c;
     --button-color: #4F46E5;
-    --background: #f9fafb;
-    --container: #fff;
-    --dark-mode: #18181b;
-    --dark-label: #000;
+    --primary-color: #f9fafb;
+    --secondry-color: #fff;
+    --font-color: #333;
+    --input-color: #fff;
+    --captcha-color: #555;
+    --border-color: rgba(0,0,0,0.3);
+    --refresh-color: #333;
+    
+    
 
 
+}
+
+.dark-theme{
+    --primary-color: #262629;
+    --secondry-color: #19191f;
+    --font-color: #fff;
+    --input-color: #18181B;
+    --captcha-color: #fff;
+    --border-color: rgba(f,f,f,0.3);
+    --refresh-color: #f9fafb;
+    
 }
 
 
@@ -26,32 +42,36 @@ body {
 		Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 	line-height: 1.6;
 	font-size: 18px;
-    background-color: #f9fafb;
+    background-color: var(--primary-color);
     font-family: 'Open Sans', sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 50vh;
     margin: 40px auto;
+    
 }
 
 .container{
-    background-color: white;
+    background-color: var(--secondry-color);
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.3);
     width: 400px;
+    position: relative;
     
 }
 
 h2{
     text-align: center;
     margin: 0 0 20px;
+    color: var(--font-color);
 }
 
 .form{
     padding: 30px 40px;
 
 }
+
 
 .form-control{
     margin-bottom: 8px;
@@ -60,7 +80,7 @@ h2{
 }
 
 .form-control label{
-    color: #333;
+    color: var(--font-color);
     display: block;
     font-size: 14px;
     margin-bottom: 5px;
@@ -69,17 +89,20 @@ h2{
 }
 
 .form-control input{
-    border: 2px solid #f0f0f0;
+    border: 1px solid #777;
+    color: var(--font-color);
     border-radius: 4px;
     display: block;
     width: 100%;
     padding: 10px;
     font-size: 14px;
+    background-color: var(--input-color);
+
 
 }
 .form-control input:focus{
     outline: 0;
-    border-color: #777;
+    border-color: var(--font-color);
 
 }
 
@@ -109,9 +132,10 @@ h2{
 
 .captcha label{
     font-size: 14px;
+    color: var(--font-color);
 }
 .captcha .preview{
-    color: #555;
+    color: var(--captcha-color);
     width: 100%;
     text-align: center;
     height: 40px;
@@ -130,20 +154,24 @@ h2{
     display: flex;
     height: 40px;
     align-items: flex-end;
-    
+    background-color: var(--input-color);
     gap: 1px;
 }
 #captcha-form{
     width: 90%;
     height: 100%;
     padding: 2px;
+    
+    padding: 10px 0;
+
 }
 .captcha .captcha-form .captcha-refresh {
     width: 40px;
     border: none;
     outline: none;
-    background: #888;
-    color: #eee;
+    background: var(--refresh-color);
+    color: var(--primary-color);
+    font-weight: 600;
     cursor: pointer;
 }
 
@@ -174,6 +202,12 @@ h2{
 }
 
 
+#icon{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    border: 1px solid var(--font-color);
+}
 
 
 

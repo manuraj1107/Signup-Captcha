@@ -6,6 +6,21 @@ const password2 = document.getElementById('password2');
 const inputCaptchaValue = document.getElementById("captcha-form");
 const button = document.getElementById("submit");
 
+
+// dark theme
+
+var icon = document.getElementById("icon");
+icon.onclick = function(){
+    document.body.classList.toggle("dark-theme");
+    if(document.body.classList.contains("dark-theme")){
+        icon.innerText = "☀";
+        icon.style.color ="#fff";
+    }
+    else{
+        icon.innerText = "🌙";
+
+    }
+}
 // Show input error message
 
 function showError(input, message){
@@ -116,7 +131,8 @@ function setCaptcha(){
 }
 
 function initCaptcha(){
-    document.querySelector(".captcha-refresh").addEventListener("click", function(){
+    document.querySelector(".captcha-refresh").addEventListener("click", function(e){
+        e.preventDefault();
         generateCaptcha();
         setCaptcha();
     });
@@ -128,7 +144,7 @@ initCaptcha();
 
   
   // Captcha Validation
-  
+
  function checkCaptcha(input){
     if(input.value === captchaValue){
         button.style.cursor = "pointer";
@@ -139,6 +155,7 @@ initCaptcha();
         alert("Invalid captcha");
       }
  }
+ 
 // Event Listener
 form.addEventListener('submit', function(e){
     
@@ -151,5 +168,6 @@ form.addEventListener('submit', function(e){
    checkPassword(password);
    checkPasswordMatch(password, password2);
    checkCaptcha(inputCaptchaValue);
+   
 
 });
