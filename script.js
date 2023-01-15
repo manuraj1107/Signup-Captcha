@@ -3,6 +3,8 @@ const username = document.getElementById('username');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 const password2 = document.getElementById('password2');
+const inputCaptchaValue = document.getElementById("captcha-form");
+const button = document.getElementById("submit");
 
 // Show input error message
 
@@ -89,35 +91,6 @@ function getFieldName(input) {
     return input.id.charAt(0).toUpperCase() + input.id.slice(1);
 }
 
-// // dark mode
-
-// function darkMode(){
-//     var SetTheme = document.getElementsByClassName("dark-mode");
-//     SetTheme.toggle("dark-mode");
-//     let body = document.querySelector("body");
-//     let container = document.querySelector("container");
-    
-
-//     var theme;
-//     if(SetTheme.classList.toggle("dark-mode")){
-//         console.log("Dark mode");
-//         theme="Dark"
-//         body.style.backgroundColor = "#18181b";
-//     container.style.backgroundColor = "#000";
-//     }
-//     else{
-//         console.log("Light mode");
-//         theme = "Light"
-//     }
-
-//     localStorage.setItem("PageTheme", JSON.stringify(theme));
-// }
-
-// let GetTheme = JSON.parse(localStorage.getItem("PageTheme"));
-
-// if(GetTheme === "Dark"){
-//     document.body.classList = "dark-mode";
-// }
 
 
 // Captcha generator
@@ -127,7 +100,7 @@ let captchaValue = "";
 function generateCaptcha() {
     let value = btoa(Math.random()*1000000000);
     value = value.substr(0, 5+Math.random()*5);
-    captchaValue = value;
+    captchaValue = value; 
 }
 
 function setCaptcha(){
@@ -143,7 +116,7 @@ function setCaptcha(){
 }
 
 function initCaptcha(){
-    document.querySelector(".captcha .captcha-refresh").addEventListener("click", function(){
+    document.querySelector(".captcha-refresh").addEventListener("click", function(){
         generateCaptcha();
         setCaptcha();
     });
@@ -152,12 +125,15 @@ function initCaptcha(){
 }
 initCaptcha();
 
-let inputCaptchaValue = document.querySelector(".captcha-form .captcha-input").value;
+
   
+  // Captcha Validation
   
- function checkCaptcha(value){
-    if(value === captchaValue){
+ function checkCaptcha(input){
+    if(input.value === captchaValue){
+        button.style.cursor = "pointer";
         alert("success");
+
       }
       else{
         alert("Invalid captcha");
